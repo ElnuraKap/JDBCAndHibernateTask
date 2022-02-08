@@ -3,10 +3,7 @@ package peaksoft.dao;
 import peaksoft.model.User;
 import peaksoft.util.Util;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,16 +72,15 @@ public class UserDaoJdbcImpl implements UserDao {
             String getAllSql = "select * from users";
             List<User> userList = new ArrayList<>();
             try (Connection connection = Util.util();
-                 PreparedStatement psmt =
-                         connection.prepareStatement(getAllSql);
-                 ResultSet resultSet = psmt.executeQuery()) {
+                Statement statement = connection.createStatement();
+                 ResultSet resultSet = statement.executeQuery(getAllSql)) {
                 while (resultSet.next()) {
                     User user = new User();
                     user.setId(resultSet.getLong("id"));
                     user.setName(resultSet.getString("name"));
                     user.setLastName(resultSet.getString("lastName"));
                     user.setAge(resultSet.getByte("age"));
-                    System.out.println(userList);
+                   userList.add(user);
 
                 }
             } catch (SQLException e) {

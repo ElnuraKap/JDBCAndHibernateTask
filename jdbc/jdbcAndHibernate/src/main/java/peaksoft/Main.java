@@ -34,14 +34,12 @@ public class Main {
         userService.saveUser(user6.getName(), user6.getLastName(), user6.getAge());
 
          List<User> userList = userService.getAllUsers();
-         for (User users : userList ) {
-             System.out.println(users);
+        System.out.println(userList);
 
-         }
 
-        //userService.dropUsersTable();
-       // userService.removeUserById(1);
-        //userService.cleanUsersTable();
+        userService.dropUsersTable();
+        userService.removeUserById(1);
+        userService.cleanUsersTable();
 
 
     }
