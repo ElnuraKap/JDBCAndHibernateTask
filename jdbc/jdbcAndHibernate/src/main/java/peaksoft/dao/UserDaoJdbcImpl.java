@@ -25,7 +25,6 @@ public class UserDaoJdbcImpl implements UserDao {
             PreparedStatement statement = connection.prepareStatement(SQL);
             statement.executeUpdate();
             System.out.println("Creat table");
-
         }catch (SQLException e){
             System.out.println(e.getMessage());
         }

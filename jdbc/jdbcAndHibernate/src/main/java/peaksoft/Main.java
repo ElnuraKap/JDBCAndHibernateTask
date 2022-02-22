@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         // реализуйте алгоритм здесь
         UserService userService = new UserServiceImpl();
-       // userService.createUsersTable();
+        userService.createUsersTable();
 
         User user = new User("Aisanat","Kolbaieva",(byte)23);
         userService.saveUser(user.getName(), user.getLastName(), user.getAge());
@@ -34,13 +34,13 @@ public class Main {
         userService.saveUser(user6.getName(), user6.getLastName(), user6.getAge());
 
          List<User> userList = userService.getAllUsers();
-        System.out.println(userList);
+        for (User users :userList) {
+            System.out.println(users);
+        }
 
-
-        userService.dropUsersTable();
         userService.removeUserById(1);
         userService.cleanUsersTable();
-
+        userService.dropUsersTable();
 
     }
 }
